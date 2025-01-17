@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Tools</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            padding: 15px 25px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #05d5ff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #05d5ff;
+        }
+
+        button:active {
+            background-color: #05d5ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Password Tools</h1>
+    <div class="button-container">
+        <button onclick="window.location.href='/generate_password'">Generate Password</button>
+        <button onclick="window.location.href='/check_password_strength'">Check Password Strength</button>
+    </div>
+</body>
+</html>

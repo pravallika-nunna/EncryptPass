@@ -1,0 +1,97 @@
+
+    /* Global Styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff; /* Light sky blue */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    
+    .card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 30px;
+        width: 300px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    h1 {
+        color: #1e90ff; /* Sky blue */
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    /* Form and Input Styling */
+    input[type="checkbox"] {
+        margin: 10px;
+    }
+
+    label {
+        display: block;
+        margin: 5px 0;
+        font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        background-color: #1e90ff; /* Sky blue */
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+
+    button:hover {
+        background-color: #4682b4; /* Darker sky blue */
+    }
+
+    /* Result Section */
+    #result {
+        margin-top: 20px;
+        display: none; /* Hidden initially */
+    }
+
+    .input-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #toggleVisibility,
+    #copyPassword {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: #1e90ff;
+    }
+
+    #toggleVisibility:hover,
+    #copyPassword:hover {
+        color: #4682b4;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 500px) {
+        .card {
+            width: 100%;
+            padding: 15px;
+        }
+    }
