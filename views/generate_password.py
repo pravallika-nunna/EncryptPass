@@ -41,7 +41,7 @@ class Password:
         static_part = self.static_random_segment()
         remaining_length = self.length - len(static_part) - len(keyword)
         if remaining_length < 0:
-            raise ValueError("Keyword and static part length exceed the specified password length.")
+            raise ValueError("Keyword length exceed the specified password length.")
         random_part = self.random_segment(remaining_length)
         password_parts = list(static_part + random_part)
         random.shuffle(password_parts)

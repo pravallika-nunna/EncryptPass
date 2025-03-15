@@ -21,7 +21,7 @@
     }
 
     h1 {
-        color: #1e90ff; /* Sky blue */
+        color: #4682b4; /* Sky blue */
     }
 
     h2 {
@@ -50,7 +50,7 @@
     }
 
     button {
-        background-color: #1e90ff; /* Sky blue */
+        background-color: #4682b4; /* Sky blue */
         color: white;
         border: none;
         padding: 10px;

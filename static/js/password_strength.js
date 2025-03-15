@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is load
             lengthRatingElement.textContent = data.length_rating;
 
         } catch (error) {
-            alert('Error fetching password strength: ' + error.message);
+            showAlert('Error fetching password strength: ' + error.message,'error');
         }
     }
 
@@ -65,14 +65,30 @@ document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is load
     copyPasswordBtn.addEventListener('click', async () => {
         try {
             if (!passwordInput.value.trim()) {
-                alert('No password to copy!');
+                showAlert('No password to copy!', 'error');
                 return;
             }
             await navigator.clipboard.writeText(passwordInput.value);
-            alert('Password copied to clipboard!');
+            
+            showAlert('Password copied to clipboard!', 'success');
         } catch (error) {
             console.error("Failed to copy password:", error);
-            alert('Failed to copy password. Please try again.');
+            showAlert('Failed to copy password. Please try again.','error');
         }
     });
+
 });
+
+// Reusable Alert Function
+function showAlert(message, type = 'error') {
+    const alertBox = document.getElementById('alertBox');
+    alertBox.textContent = message;
+
+    // Apply type (error/success)
+    alertBox.className = `alert ${type} show`;
+
+    // Remove alert after 2 seconds
+    setTimeout(() => {
+        alertBox.classList.remove('show');
+    }, 2000);
+}
