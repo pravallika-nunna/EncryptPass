@@ -6,36 +6,7 @@
 
 ## 📁 Folder Structure
 
-encryptpass/
-├── app.py                      # Main Flask app
-├── requirements.txt            # Required Python libraries
-├── venv/                       # Python virtual environment
-├── templates/                  # HTML files
-│   ├── index.html
-│   ├── generate_password.html
-│   ├── password_strength.html
-│   └── about.html
-├── views/                      # Backend logic & routing with Flask
-│   ├── __init__.py
-│   ├── generate_password.py
-│   ├── password_strength.py
-│   └── password_routes.py
-└── static/                     # Static files
-    ├── css/                    # Stylesheets
-    │   ├── styles.css
-    │   ├── generate_password.css
-    │   └── password_strength.css
-    ├── js/                     # JavaScript files
-    │   ├── generate_password.js
-    │   └── password_strength.js
-    └── images/                 # Icons and images
-        └── logo.png
-
-
-
-
-
-
+![Folder Structure](static/images/folder_structure.png)
 
 ---
 
@@ -154,11 +125,20 @@ requests==2.32.3
 zxcvbn==4.5.0
 ```
 
-## 🖼️ Snapshots (Screenshots)
-1. Home Page	snapshots/homepage.png
-2. Password Gen	snapshots/generate.png
-3. Strength Meter	snapshots/strength.png
-4. About Page	snapshots/about.png
+## 🖼️ Snapshots
+
+### 🔹 Home Page
+![Home Page](static/images/home.png)
+
+### 🔹 Password Generator Page
+![Generate Password](static/images/generate.png)
+
+### 🔹 Password Strength Meter Page
+![Password Strength](static/images/strength_preview.png)
+![Password Strength Usage](static/images/strength_usage.png)
+
+### 🔹 About Page
+![About Page](static/images/about.png)
 
 ➡️ Replace the above image paths with your actual images in the snapshots/ folder.
 

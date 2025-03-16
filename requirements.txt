@@ -7,13 +7,13 @@ colorama==0.4.6
 cryptography==44.0.1
 Flask==2.3.2
 Flask-MySQLdb==1.0.0
-gunicorn==21.2.0         # WSGI HTTP server for deployment (essential on Render)
-bcrypt==4.1.2            # Optional but recommended if using for password hashing
 idna==3.10
 itsdangerous==2.2.0
 Jinja2==3.1.5
+logging==0.4.9.6
 MarkupSafe==3.0.2
 mysqlclient==2.2.7
+pycparser==2.22
 PyMySQL==1.0.3
 python-dotenv==0.21.0
 redis==5.0.0
