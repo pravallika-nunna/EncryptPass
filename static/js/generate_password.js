@@ -2,9 +2,9 @@
 const passwordForm = document.getElementById("passwordForm");
 const generatedPassword = document.getElementById("generatedPassword");
 const toggleVisibilityBtn = document.getElementById("toggleVisibility");
+const eyeIcon = toggleVisibilityBtn.querySelector('ion-icon');
 const copyBtn = document.getElementById("copyPassword");
-const tooltip = document.getElementById("tooltip");
-const alertBox = document.getElementById("alertBox"); // Add this to your HTML if it's not there
+const alertBox = document.getElementById("alertBox"); // Make sure this exists in your HTML
 
 // ✅ Check if elements exist before proceeding
 if (passwordForm && generatedPassword && toggleVisibilityBtn && copyBtn) {
@@ -47,7 +47,7 @@ if (passwordForm && generatedPassword && toggleVisibilityBtn && copyBtn) {
             if (result.success) {
                 generatedPassword.value = result.password;
                 generatedPassword.type = 'password'; // Reset to password type after generation
-                toggleVisibilityBtn.textContent = '👁️'; // Reset toggle button icon
+                eyeIcon.setAttribute('name', 'eye-outline'); // Reset eye icon
                 generatedPassword.disabled = false; // Enable input in case it was disabled
                 showAlert("Password generated successfully!", "success");
             } else {
@@ -65,42 +65,29 @@ if (passwordForm && generatedPassword && toggleVisibilityBtn && copyBtn) {
         }
     });
 
-    // Toggle password visibility
+    // ✅ FIXED: Toggle password visibility with Ionicons
     toggleVisibilityBtn.addEventListener('click', () => {
         if (generatedPassword.type === 'password') {
             generatedPassword.type = 'text';
-            toggleVisibilityBtn.textContent = '🙈';
         } else {
             generatedPassword.type = 'password';
-            toggleVisibilityBtn.textContent = '👁️';
         }
+
+        // ✅ Correctly update icon based on state
+        eyeIcon.setAttribute('name', generatedPassword.type === 'password' ? 'eye-outline' : 'eye-off-outline');
     });
 
-    // Copy to clipboard event
+    // ✅ Copy to clipboard event
     copyBtn.addEventListener('click', () => {
         if (generatedPassword.disabled || !generatedPassword.value || generatedPassword.value.includes("Error")) {
             showAlert("Nothing to copy!", "error");
             return;
         }
 
-        generatedPassword.select();
-        generatedPassword.setSelectionRange(0, 99999); // For mobile devices
-
         navigator.clipboard.writeText(generatedPassword.value)
             .then(() => {
                 console.log('Password copied!');
-
-                if (tooltip) {
-                    tooltip.textContent = 'Copied!';
-                    tooltip.classList.add('show');
-
-                    setTimeout(() => {
-                        tooltip.classList.remove('show');
-                        tooltip.textContent = '';
-                    }, 1500);
-                } else {
-                    showAlert("Password copied to clipboard!", "success");
-                }
+                showAlert("Password copied to clipboard!", "success");
             })
             .catch(err => {
                 console.error('Failed to copy!', err);
@@ -112,23 +99,64 @@ if (passwordForm && generatedPassword && toggleVisibilityBtn && copyBtn) {
     console.error('One or more elements are missing from the DOM.');
 }
 
+// ✅ Show alerts with dynamic types + auto-dismiss + close button
 function showAlert(message, type = 'error') {
     if (!alertBox) return;
 
+    // Reset content and classes
     alertBox.textContent = message;
+    alertBox.className = 'alert'; // Base alert class reset
 
-    // Reset classes
-    alertBox.className = 'alert';
-
+    // Add the alert type class (success or error)
     if (type === 'success') {
         alertBox.classList.add('success');
     }
 
+    // Create and add the close button (×)
+    let closeBtn = document.createElement('span');
+    closeBtn.innerHTML = '&times;';
+    closeBtn.style.marginLeft = '12px';
+    closeBtn.style.cursor = 'pointer';
+    closeBtn.style.fontWeight = 'bold';
+
+    // When user clicks close button
+    closeBtn.onclick = () => {
+        hideAlert();
+    };
+
+    // Remove previous close button if already exists
+    const existingCloseBtn = alertBox.querySelector('span');
+    if (existingCloseBtn) {
+        existingCloseBtn.remove();
+    }
+
+    alertBox.appendChild(closeBtn);
+
+    // Show the alert
     alertBox.classList.add('show');
+
+    // Auto-dismiss after 5 seconds with fade-out
+    setTimeout(() => {
+        alertBox.style.opacity = '0';
+        alertBox.style.transform = 'translateY(-20px)';
+
+        // After fade-out transition ends
+        setTimeout(() => {
+            hideAlert();
+            alertBox.style.opacity = '';
+            alertBox.style.transform = '';
+        }, 300); // Should match CSS transition duration
+    }, 3000);
 }
 
+// ✅ Hide alerts function with optional fade-out reset
 function hideAlert() {
     if (!alertBox) return;
 
     alertBox.className = 'alert hidden';
+
+    // Optional: reset other styles if modified during fade-out
+    alertBox.style.opacity = '';
+    alertBox.style.transform = '';
 }
+

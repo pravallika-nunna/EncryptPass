@@ -1,97 +1,114 @@
+/* Reset and Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align below the header */
+    height: 100vh;
+}
 
-    /* Global Styles */
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f8ff; /* Light sky blue */
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-    
-    .card {
-        background-color: white;
-        border-radius: 10px;
-        padding: 30px;
-        width: 300px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
+/* Header Brand Name */
+header {
+    width: 100%;
+    background-color: #05d5ff;
+    color: #fff;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Section */
+h1 {
+    color: #333;
+    margin: 150px 0 40px 0;
+    font-size: 28px;
+    text-align: center;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+    justify-content: center; /* Center the buttons */
+}
+
+/* Buttons */
+button {
+    padding: 15px 25px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #05d5ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    min-width: 200px; /* Ensures better tap targets on mobile */
+}
+
+button:hover {
+    background-color: #05c0e8;
+}
+
+button:active {
+    background-color: #05a9cc;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    header {
+        font-size: 28px;
+        padding: 15px 0;
     }
 
     h1 {
-        color: #4682b4; /* Sky blue */
-    }
-
-    h2 {
-        color: #333;
-    }
-
-    /* Form and Input Styling */
-    input[type="checkbox"] {
-        margin: 10px;
-    }
-
-    label {
-        display: block;
-        margin: 5px 0;
-        font-size: 14px;
-    }
-
-    input[type="text"],
-    input[type="number"],
-    input[type="password"] {
-        width: 100%;
-        padding: 8px;
-        margin: 10px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
+        font-size: 24px;
+        margin: 100px 0 30px 0;
     }
 
     button {
-        background-color: #4682b4; /* Sky blue */
-        color: white;
-        border: none;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 10px;
+        padding: 12px 20px;
         font-size: 14px;
+        min-width: 160px;
     }
 
-    button:hover {
-        background-color: #4682b4; /* Darker sky blue */
+    .button-container {
+        gap: 15px;
+    }
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 80px;
+    margin-top: 150px;
+}
+
+.about-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 20px;
+        margin: 80px 0 20px 0;
     }
 
-    /* Result Section */
-    #result {
-        margin-top: 20px;
-        display: none; /* Hidden initially */
+    button {
+        padding: 10px 15px;
+        font-size: 12px;
+        min-width: 140px;
     }
 
-    .input-container {
-        display: flex;
-        justify-content: space-between;
+    header {
+        font-size: 24px;
     }
-
-    #toggleVisibility,
-    #copyPassword {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        color: #1e90ff;
-    }
-
-    #toggleVisibility:hover,
-    #copyPassword:hover {
-        color: #4682b4;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 500px) {
-        .card {
-            width: 100%;
-            padding: 15px;
-        }
-    }
+}

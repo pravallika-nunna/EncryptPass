@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Password Policy</title>
+    <link rel="stylesheet" href="styles.css"> <!-- External CSS if needed -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9; /* Matches your main page background */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            background-color: #05d5ff; /* Bright Blue Header */
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333; /* Darker shade for contrast */
+        }
+
+        a {
+            color: #05d5ff; /* Match link color with primary color */
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px 20px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(5, 213, 255, 0.2); /* Subtle blue shadow */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        code {
+            background-color: #eef9fc;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #333;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 600px) {
+            header {
+                font-size: 24px;
+                padding: 15px 0;
+            }
+
+            .container {
+                margin: 20px 10px;
+                padding: 20px;
+            }
+
+            h1, h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Password Policy & Authentication Guidelines
+</header>
+
+<div class="container">
+
+    <section>
+        <h2>Introduction</h2>
+        <p>
+            This page provides an overview of modern password policies and authentication guidelines in line with OWASP, NIST, and other leading security frameworks.
+        </p>
+    </section>
+
+    <section>
+        <h2>Password Length Requirements</h2>
+        <ul>
+            <li>Minimum password length should be at least <strong>12 characters</strong>.</li>
+            <li>Maximum password length should allow at least <strong>64 characters</strong>, rejecting anything over <strong>128 characters</strong>.</li>
+            <li>Passwords shorter than <strong>8 characters</strong> are considered weak (NIST SP800-63B).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Character Support & Rules</h2>
+        <ul>
+            <li>Allow any printable Unicode characters, including spaces and emojis.</li>
+            <li>Do not truncate passwords silently if they exceed the maximum length.</li>
+            <li>No forced password composition rules (no requirements for uppercase, lowercase, numbers, or special characters).</li>
+            <li>Support copy-paste, browser password managers, and external password managers.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Password Strength & Breach Detection</h2>
+        <ul>
+            <li>Include a password strength meter to assist users in creating stronger passwords. Libraries like <code>zxcvbn-ts</code> can be used.</li>
+            <li>Passwords should be checked against a database of breached passwords. Services like <a href="https://haveibeenpwned.com/Passwords" target="_blank">Pwned Passwords</a> can be used, either via API or self-hosted solutions.</li>
+            <li>Zero-knowledge proof mechanisms should be used when interacting with external APIs to check passwords.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Password Change & Rotation</h2>
+        <ul>
+            <li>Users must be able to change their passwords at any time.</li>
+            <li>Password change must require the current password along with the new one.</li>
+            <li>No forced periodic credential rotation unless there’s evidence of compromise.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Usability Considerations</h2>
+        <ul>
+            <li>Allow users to view the entire masked password or temporarily view the last typed character if the platform does not provide this feature natively.</li>
+            <li>Support for longer passphrases improves usability and encourages better password practices.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Best Practices from OWASP ASVS 4.0</h2>
+        <ul>
+            <li>Minimum password length: <strong>12 characters</strong>.</li>
+            <li>Maximum password length: <strong>64 characters (up to 128 can be rejected)</strong>.</li>
+            <li>Do not perform password truncation.</li>
+            <li>Allow Unicode characters including emojis and spaces.</li>
+            <li>Provide password breach checks and strength meters.</li>
+            <li>No requirements on character composition.</li>
+            <li>Do not enforce password expiration policies without cause.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>References</h2>
+        <ul>
+            <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html" target="_blank">OWASP Authentication Cheat Sheet</a></li>
+            <li><a href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/04-Authentication_Testing/07-Testing_for_Weak_Password_Policy" target="_blank">OWASP Web Security Testing Guide: Weak Password Policy</a></li>
+            <li><a href="https://github.com/OWASP/ASVS/blob/master/4.0/en/0x11-V2-Authentication.md#v21-password-security-requirements" target="_blank">OWASP ASVS 4.0 - Password Security Requirements</a></li>
+            <li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#maximum-password-lengths" target="_blank">OWASP Password Storage Cheat Sheet</a></li>
+            <li><a href="https://www.troyhunt.com/passwords-evolved-authentication-guidance-for-the-modern-era/" target="_blank">Passwords Evolved - Troy Hunt</a></li>
+        </ul>
+    </section>
+
+</div>
+
+</body>
+</html>

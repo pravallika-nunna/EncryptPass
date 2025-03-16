@@ -11,6 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is load
     const pwnedElement = document.getElementById('pwned');
     const pwnedCountElement = document.getElementById('pwned_count');
 
+    const infoButton = document.getElementById('pwnedInfoButton');
+    const infoText = document.getElementById('pwnedInfoText');
+
+    infoButton.addEventListener('click', () => {
+        // Toggle the hidden class
+        infoText.classList.toggle('hidden');
+    });
+
     // Hide result container initially
     resultContainer.style.display = "none";
 
@@ -52,14 +60,16 @@ document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is load
 
     // Toggle password visibility
     toggleVisibilityBtn.addEventListener('click', () => {
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            toggleVisibilityBtn.textContent = '🙈';
-        } else {
-            passwordInput.type = 'password';
-            toggleVisibilityBtn.textContent = '👁️';
-        }
+        const isPasswordHidden = passwordInput.type === 'password';
+
+        // Toggle password field type
+        passwordInput.type = isPasswordHidden ? 'text' : 'password';
+
+        // Update icon name
+        const iconName = isPasswordHidden ? 'eye-off-outline' : 'eye-outline';
+        document.getElementById('visibilityIcon').setAttribute('name', iconName);
     });
+
 
     // Copy password to clipboard
     copyPasswordBtn.addEventListener('click', async () => {
@@ -79,16 +89,46 @@ document.addEventListener('DOMContentLoaded', () => {  // Ensure the DOM is load
 
 });
 
-// Reusable Alert Function
+// Reusable Alert Function with Auto-dismiss and Close Button
 function showAlert(message, type = 'error') {
     const alertBox = document.getElementById('alertBox');
+
+    // Set the message
     alertBox.textContent = message;
 
-    // Apply type (error/success)
+    // Create and add the close button (×)
+    let closeBtn = document.createElement('span');
+    closeBtn.innerHTML = '&times;';
+    closeBtn.style.marginLeft = '12px';
+    closeBtn.style.cursor = 'pointer';
+    closeBtn.style.fontWeight = 'bold';
+    closeBtn.onclick = () => {
+        alertBox.classList.remove('show');
+    };
+
+    // Clear previous close buttons if they exist
+    const existingCloseBtn = alertBox.querySelector('span');
+    if (existingCloseBtn) {
+        existingCloseBtn.remove();
+    }
+
+    alertBox.appendChild(closeBtn);
+
+    // Apply type (error/success) and show alert
     alertBox.className = `alert ${type} show`;
 
-    // Remove alert after 2 seconds
+    // Auto-dismiss after 5 seconds with fade out effect
     setTimeout(() => {
-        alertBox.classList.remove('show');
-    }, 2000);
+        alertBox.style.opacity = '0';
+        alertBox.style.transform = 'translateY(-20px)';
+
+        // Remove 'show' class after transition completes (optional clean-up)
+        setTimeout(() => {
+            alertBox.classList.remove('show');
+            alertBox.style.opacity = '';
+            alertBox.style.transform = '';
+        }, 300);
+    }, 3000);
 }
+
+

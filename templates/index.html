@@ -4,61 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Tools</title>
+    <meta name="description" content="Password Tools - Generate and check the strength of your passwords securely and easily!">
 
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start; /* Align below the header */
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f9;
-        }
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 
-        header {
-            width: 100%;
-            background-color: #05d5ff;
-            color: #fff;
-            font-size: 36px;
-            font-weight: bold;
-            text-align: center;
-            padding: 20px 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            color: #333;
-            margin: 150px 0 40px 0; /* Increased top margin from 60px to 80px */
-            font-size: 28px;
-        }
-
-        .button-container {
-            display: flex;
-            gap: 20px;
-        }
-
-        button {
-            padding: 15px 25px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #05d5ff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #05c0e8;
-        }
-
-        button:active {
-            background-color: #05a9cc;
-        }
-    </style>
 </head>
 <body>
 
@@ -72,6 +22,24 @@
         <button onclick="window.location.href='/generate_password'">Generate Password</button>
         <button onclick="window.location.href='/check_password_strength'">Check Password Strength</button>
     </div>
+
+    <footer>
+        <button 
+            class="about-button"
+            onclick="window.location.href='/about'"
+            style="
+                background-color: #4bb2c4; 
+                color: #fff; 
+                padding: 10px 20px; 
+                font-size: 1rem; 
+                cursor: pointer; 
+                border: none; 
+                border-radius: 5px;
+            ">
+            Password Policy & Authentication Guidelines
+        </button>
+    </footer>
+    
 
 </body>
 </html>

@@ -16,6 +16,10 @@ def check_password_strength_page():
 def generate_password_page():
     return render_template("generate_password.html")
 
+@app.route("/about")
+def about():
+    return render_template('about.html')
+
 @app.route("/")
 def index():
     return render_template("index.html")
