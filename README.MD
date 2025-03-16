@@ -6,7 +6,7 @@
 
 ## 📁 Folder Structure
 
-![Folder Structure](static\images\folder_structure.png)
+![Folder Structure](static/images/folder_structure.png)
 
 ---
 
